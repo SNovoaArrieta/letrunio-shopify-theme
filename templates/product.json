@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "main": { "type": "main-product", "settings": {} },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "q1": { "type": "question", "settings": { "question": "¿Cómo recibiré el ebook?", "answer": "<p>Después de confirmar el pago recibirás el enlace de descarga en tu correo.</p>" } },
+        "q2": { "type": "question", "settings": { "question": "¿Es un producto físico?", "answer": "<p>No. Es un producto digital.</p>" } }
+      },
+      "block_order": ["q1", "q2"],
+      "settings": {}
+    }
+  },
+  "order": ["main", "faq"]
+}

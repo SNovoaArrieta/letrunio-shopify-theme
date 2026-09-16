@@ -1,0 +1,47 @@
+<section class="section">
+  <div class="page-width">
+    <div class="section-heading">
+      <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      <h2>{{ section.settings.heading }}</h2>
+    </div>
+    <div class="features-grid">
+      {% for block in section.blocks %}
+        <article class="feature-card" {{ block.shopify_attributes }}>
+          <span class="feature-icon" aria-hidden="true">{{ forloop.index }}</span>
+          <h3>{{ block.settings.heading }}</h3>
+          <p>{{ block.settings.text }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Beneficios",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Texto superior", "default": "HECHO PARA LA VIDA REAL" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "Menos complicaciones, mejores planes" }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Beneficio",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Título", "default": "Fácil de preparar" },
+        { "type": "textarea", "id": "text", "label": "Texto", "default": "No necesitas una producción enorme para hacer algo diferente." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Beneficios",
+      "blocks": [
+        {"type":"feature","settings":{"heading":"Fácil de preparar","text":"Planes posibles con cosas que probablemente ya tienen en casa."}},
+        {"type":"feature","settings":{"heading":"Para distintos presupuestos","text":"Ideas sencillas que no dependen de gastar mucho para sentirse especiales."}},
+        {"type":"feature","settings":{"heading":"Para volver a conectar","text":"Una excusa para conversar, reírse y compartir tiempo con intención."}}
+      ]
+    }
+  ]
+}
+{% endschema %}

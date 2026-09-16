@@ -1,0 +1,47 @@
+{% if section.settings.announcement != blank %}
+  <div class="announcement">{{ section.settings.announcement }}</div>
+{% endif %}
+
+<header class="site-header">
+  <div class="page-width header-inner">
+    <details class="mobile-menu">
+      <summary aria-label="Abrir menú">Menú</summary>
+      <nav class="mobile-menu-panel" aria-label="Navegación móvil">
+        {% for link in section.settings.menu.links %}
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        {% endfor %}
+      </nav>
+    </details>
+
+    <a class="brand" href="{{ routes.root_url }}" aria-label="{{ shop.name }} — Inicio">
+      {% if section.settings.logo != blank %}
+        {{ section.settings.logo | image_url: width: 360 | image_tag: widths: '180, 240, 360', alt: shop.name }}
+      {% else %}
+        {{ shop.name | default: 'LETRUNIO' }}
+      {% endif %}
+    </a>
+
+    <nav class="nav desktop-nav" aria-label="Navegación principal">
+      {% for link in section.settings.menu.links %}
+        <a href="{{ link.url }}">{{ link.title }}</a>
+      {% endfor %}
+    </nav>
+
+    <div class="header-actions">
+      <a class="cart-link" href="{{ routes.cart_url }}" aria-label="Carrito con {{ cart.item_count }} productos">
+        Carrito <span class="cart-count">{{ cart.item_count }}</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Encabezado",
+  "settings": [
+    { "type": "text", "id": "announcement", "label": "Anuncio", "default": "Ebooks con ideas que puedes poner en práctica" },
+    { "type": "image_picker", "id": "logo", "label": "Logo" },
+    { "type": "link_list", "id": "menu", "label": "Menú principal", "default": "main-menu" }
+  ]
+}
+{% endschema %}

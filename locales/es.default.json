@@ -1,0 +1,19 @@
+{
+  "general": {
+    "accessibility": {
+      "skip_to_content": "Saltar al contenido"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Agregar al carrito",
+      "sold_out": "Agotado"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Carrito",
+      "checkout": "Finalizar compra"
+    }
+  }
+}

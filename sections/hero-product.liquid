@@ -1,0 +1,87 @@
+{% assign featured_product = section.settings.product %}
+{% assign featured_image = section.settings.image %}
+{% if featured_product != blank and featured_product.featured_image != blank %}
+  {% assign featured_image = featured_product.featured_image %}
+{% endif %}
+
+<section class="hero">
+  <div class="page-width hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      <h1>{{ section.settings.heading }}</h1>
+      <div class="lead">{{ section.settings.text }}</div>
+      <div class="hero-meta">
+        {% for block in section.blocks %}
+          <span class="pill" {{ block.shopify_attributes }}>{{ block.settings.text }}</span>
+        {% endfor %}
+      </div>
+
+      <div class="hero-price">
+        {% if featured_product != blank %}
+          {{ featured_product.price | money }}
+        {% else %}
+          {{ section.settings.fallback_price }}
+        {% endif %}
+      </div>
+
+      <div class="hero-actions">
+        {% if featured_product != blank %}
+          {% form 'product', featured_product %}
+            <input type="hidden" name="id" value="{{ featured_product.selected_or_first_available_variant.id }}">
+            <button class="button" type="submit" name="add" {% unless featured_product.available %}disabled{% endunless %}>
+              {% if featured_product.available %}Quiero mi ebook{% else %}Agotado{% endif %}
+            </button>
+          {% endform %}
+          <a class="button button--secondary" href="{{ featured_product.url }}">Ver todos los detalles</a>
+        {% else %}
+          <a class="button" href="{{ section.settings.cta_link | default: '#contenido' }}">{{ section.settings.cta_label }}</a>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-label="Portada de Una noche para dos">
+      <div class="product-cover">
+        {% if featured_image != blank %}
+          {{ featured_image | image_url: width: 900 | image_tag: widths: '420, 640, 900', loading: 'eager', alt: section.settings.heading }}
+        {% else %}
+          <div class="cover-placeholder">
+            <span class="cover-brand">LETRUNIO</span>
+            <h2>Una noche para dos</h2>
+            <p>30 citas en casa para salir de la rutina</p>
+          </div>
+        {% endif %}
+      </div>
+      <div class="floating-note">{{ section.settings.note }}</div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Portada del producto",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Producto destacado" },
+    { "type": "image_picker", "id": "image", "label": "Portada alternativa" },
+    { "type": "text", "id": "eyebrow", "label": "Texto superior", "default": "PRIMERA COLECCIÓN DE LETRUNIO" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "Planes que vuelven especial una noche cualquiera" },
+    { "type": "richtext", "id": "text", "label": "Descripción", "default": "<p>30 citas en casa, fáciles de preparar y pensadas para conectar sin repetir siempre el mismo plan.</p>" },
+    { "type": "text", "id": "fallback_price", "label": "Precio mientras eliges el producto", "default": "US$9,90" },
+    { "type": "text", "id": "cta_label", "label": "Texto del botón", "default": "Descubrir el ebook" },
+    { "type": "url", "id": "cta_link", "label": "Enlace del botón" },
+    { "type": "text", "id": "note", "label": "Nota flotante", "default": "Ideas simples. Momentos que sí se recuerdan." }
+  ],
+  "blocks": [
+    {
+      "type": "tag",
+      "name": "Etiqueta",
+      "settings": [{ "type": "text", "id": "text", "label": "Texto", "default": "Descarga digital" }]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Portada del producto",
+      "blocks": [{"type":"tag"},{"type":"tag","settings":{"text":"30 ideas"}},{"type":"tag","settings":{"text":"Para hacer en casa"}}]
+    }
+  ]
+}
+{% endschema %}

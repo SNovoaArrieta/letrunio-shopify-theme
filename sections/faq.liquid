@@ -1,0 +1,46 @@
+<section class="section">
+  <div class="page-width">
+    <div class="section-heading">
+      <p class="eyebrow">PREGUNTAS FRECUENTES</p>
+      <h2>{{ section.settings.heading }}</h2>
+    </div>
+    <div class="faq-list">
+      {% for block in section.blocks %}
+        <details class="faq-item" {{ block.shopify_attributes }}>
+          <summary>{{ block.settings.question }}</summary>
+          <div class="faq-answer">{{ block.settings.answer }}</div>
+        </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Preguntas frecuentes",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Título", "default": "Antes de descargar" }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Pregunta",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Pregunta", "default": "¿Cómo recibiré el ebook?" },
+        { "type": "richtext", "id": "answer", "label": "Respuesta", "default": "<p>Después de confirmar el pago recibirás el acceso de descarga en tu correo.</p>" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Preguntas frecuentes",
+      "blocks": [
+        {"type":"question","settings":{"question":"¿Cómo recibiré el ebook?","answer":"<p>Después de confirmar el pago recibirás el enlace de descarga en tu correo.</p>"}},
+        {"type":"question","settings":{"question":"¿Es un producto físico?","answer":"<p>No. Es un ebook digital que podrás consultar desde tu celular, tableta o computador.</p>"}},
+        {"type":"question","settings":{"question":"¿Necesito comprar materiales costosos?","answer":"<p>No. Las ideas están pensadas para adaptarse a diferentes espacios y presupuestos.</p>"}},
+        {"type":"question","settings":{"question":"¿Puedo imprimirlo?","answer":"<p>Sí. Puedes usarlo en formato digital o imprimirlo para uso personal.</p>"}}
+      ]
+    }
+  ]
+}
+{% endschema %}

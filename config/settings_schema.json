@@ -1,0 +1,21 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Letrunio",
+    "theme_author": "Letrunio",
+    "theme_version": "1.0.0",
+    "theme_documentation_url": "https://shopify.dev/docs/storefronts/themes",
+    "theme_support_url": "https://help.shopify.com/"
+  },
+  {
+    "name": "Identidad visual",
+    "settings": [
+      { "type": "color", "id": "color_background", "label": "Fondo", "default": "#ffffff" },
+      { "type": "color", "id": "color_surface", "label": "Superficie", "default": "#f2f8ff" },
+      { "type": "color", "id": "color_foreground", "label": "Texto", "default": "#152b42" },
+      { "type": "color", "id": "color_primary", "label": "Azul principal", "default": "#082344" },
+      { "type": "color", "id": "color_accent", "label": "Celeste", "default": "#83d0ff" },
+      { "type": "range", "id": "page_width", "min": 1000, "max": 1500, "step": 20, "unit": "px", "label": "Ancho máximo", "default": 1240 }
+    ]
+  }
+]

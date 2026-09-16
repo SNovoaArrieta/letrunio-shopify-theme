@@ -1,0 +1,47 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-product",
+      "blocks": {
+        "tag1": { "type": "tag", "settings": { "text": "Descarga digital" } },
+        "tag2": { "type": "tag", "settings": { "text": "30 ideas" } },
+        "tag3": { "type": "tag", "settings": { "text": "Para hacer en casa" } }
+      },
+      "block_order": ["tag1", "tag2", "tag3"],
+      "settings": {}
+    },
+    "value": {
+      "type": "value-cards",
+      "blocks": {
+        "card1": { "type": "card", "settings": { "number": "30", "heading": "Citas diferentes", "text": "Ideas variadas para noches tranquilas, creativas, divertidas o especiales." } },
+        "card2": { "type": "card", "settings": { "number": "01", "heading": "Guía fácil de seguir", "text": "Cada plan explica qué preparar y cómo convertirlo en una experiencia completa." } },
+        "card3": { "type": "card", "settings": { "number": "∞", "heading": "Momentos para ustedes", "text": "Opciones que se pueden adaptar a sus gustos, espacio y presupuesto." } }
+      },
+      "block_order": ["card1", "card2", "card3"],
+      "settings": {}
+    },
+    "features": {
+      "type": "features",
+      "blocks": {
+        "feature1": { "type": "feature", "settings": { "heading": "Fácil de preparar", "text": "Planes posibles con cosas que probablemente ya tienen en casa." } },
+        "feature2": { "type": "feature", "settings": { "heading": "Para distintos presupuestos", "text": "Ideas sencillas que no dependen de gastar mucho para sentirse especiales." } },
+        "feature3": { "type": "feature", "settings": { "heading": "Para volver a conectar", "text": "Una excusa para conversar, reírse y compartir tiempo con intención." } }
+      },
+      "block_order": ["feature1", "feature2", "feature3"],
+      "settings": {}
+    },
+    "story": { "type": "brand-story", "settings": {} },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "q1": { "type": "question", "settings": { "question": "¿Cómo recibiré el ebook?", "answer": "<p>Después de confirmar el pago recibirás el enlace de descarga en tu correo.</p>" } },
+        "q2": { "type": "question", "settings": { "question": "¿Es un producto físico?", "answer": "<p>No. Es un ebook digital que podrás consultar desde tu celular, tableta o computador.</p>" } },
+        "q3": { "type": "question", "settings": { "question": "¿Necesito comprar materiales costosos?", "answer": "<p>No. Las ideas están pensadas para adaptarse a diferentes espacios y presupuestos.</p>" } },
+        "q4": { "type": "question", "settings": { "question": "¿Puedo imprimirlo?", "answer": "<p>Sí. Puedes usarlo en formato digital o imprimirlo para uso personal.</p>" } }
+      },
+      "block_order": ["q1", "q2", "q3", "q4"],
+      "settings": {}
+    }
+  },
+  "order": ["hero", "value", "features", "story", "faq"]
+}
