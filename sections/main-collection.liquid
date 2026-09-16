@@ -1,35 +1,59 @@
-<section class="section section--soft">
-  <div class="page-width">
-    <div class="section-heading">
+<section class="collection-page">
+  <div class="collection-hero">
+    <div class="page-width collection-hero-inner">
       <p class="eyebrow">COLECCIÓN LETRUNIO</p>
       <h1>{{ collection.title }}</h1>
-      {% if collection.description != blank %}<div class="richtext">{{ collection.description }}</div>{% endif %}
+      {% if collection.description != blank %}
+        <div class="collection-description">{{ collection.description }}</div>
+      {% else %}
+        <p>Ideas útiles para aprender, crear y disfrutar, reunidas en ebooks fáciles de poner en práctica.</p>
+      {% endif %}
     </div>
+  </div>
 
-    {% paginate collection.products by section.settings.products_per_page %}
-      <div class="collection-grid">
-        {% for product in collection.products %}
-          <article class="product-card">
-            <a href="{{ product.url }}">
-              <div class="product-card-media">
-                {% if product.featured_image %}
-                  {{ product.featured_image | image_url: width: 800 | image_tag: widths: '360, 540, 800', loading: 'lazy', alt: product.title }}
-                {% else %}
-                  {{ 'product-1' | placeholder_svg_tag }}
-                {% endif %}
-              </div>
-              <div class="product-card-copy">
-                <h2>{{ product.title }}</h2>
-                <p class="product-card-price">{{ product.price | money }}</p>
-              </div>
-            </a>
-          </article>
-        {% else %}
-          <p>Muy pronto encontrarás nuevos ebooks en esta colección.</p>
-        {% endfor %}
-      </div>
-      {{ paginate | default_pagination }}
-    {% endpaginate %}
+  <div class="section collection-products">
+    <div class="page-width">
+      {% paginate collection.products by section.settings.products_per_page %}
+        <div class="collection-toolbar">
+          <p><strong>{{ collection.products_count }}</strong> {% if collection.products_count == 1 %}ebook disponible{% else %}ebooks disponibles{% endif %}</p>
+          <span>Entrega 100% digital</span>
+        </div>
+
+        <div class="collection-grid">
+          {% for product in collection.products %}
+            <article class="product-card">
+              <a href="{{ product.url }}" aria-label="Ver {{ product.title }}">
+                <div class="product-card-media">
+                  <span class="product-card-badge">Ebook digital</span>
+                  {% if product.featured_image %}
+                    {{ product.featured_image | image_url: width: 900 | image_tag: widths: '360, 540, 720, 900', loading: 'lazy', alt: product.title }}
+                  {% else %}
+                    {{ 'product-1' | placeholder_svg_tag }}
+                  {% endif %}
+                </div>
+                <div class="product-card-copy">
+                  <p class="product-card-type">Ideas que puedes poner en práctica</p>
+                  <h2>{{ product.title }}</h2>
+                  <div class="product-card-footer">
+                    <p class="product-card-price">{{ product.price | money }}</p>
+                    <span>Ver ebook →</span>
+                  </div>
+                </div>
+              </a>
+            </article>
+          {% else %}
+            <div class="collection-empty">
+              <span aria-hidden="true">✦</span>
+              <h2>Nuevas ideas están en camino</h2>
+              <p>Muy pronto encontrarás los próximos ebooks de Letrunio en esta colección.</p>
+              <a class="button" href="{{ routes.root_url }}">Volver al inicio</a>
+            </div>
+          {% endfor %}
+        </div>
+
+        {% if paginate.pages > 1 %}<div class="pagination">{{ paginate | default_pagination }}</div>{% endif %}
+      {% endpaginate %}
+    </div>
   </div>
 </section>
 

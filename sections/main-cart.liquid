@@ -1,36 +1,58 @@
 <section class="section cart-page">
   <div class="page-width">
-    <p class="eyebrow">TU SELECCIÓN</p>
-    <h1>Carrito</h1>
+    <div class="cart-heading">
+      <div>
+        <p class="eyebrow">TU SELECCIÓN</p>
+        <h1>Carrito</h1>
+      </div>
+      {% if cart.item_count > 0 %}<p>{{ cart.item_count }} {% if cart.item_count == 1 %}producto{% else %}productos{% endif %}</p>{% endif %}
+    </div>
 
     {% if cart.item_count == 0 %}
-      <div class="richtext">
-        <p>Tu carrito está vacío.</p>
-        <p><a class="button" href="{{ routes.root_url }}">Explorar Letrunio</a></p>
+      <div class="cart-empty">
+        <span aria-hidden="true">◇</span>
+        <h2>Tu carrito está esperando una buena idea</h2>
+        <p>Explora los ebooks de Letrunio y encuentra el próximo que quieras poner en práctica.</p>
+        <a class="button" href="{{ routes.all_products_collection_url }}">Explorar ebooks</a>
       </div>
     {% else %}
-      {% form 'cart', cart %}
+      {% form 'cart', cart, class: 'cart-layout' %}
         <div class="cart-items">
           {% for item in cart.items %}
             <article class="cart-item">
-              {% if item.image %}{{ item.image | image_url: width: 200 | image_tag: alt: item.product.title }}{% endif %}
-              <div>
+              <a class="cart-item-image" href="{{ item.url }}">
+                {% if item.image %}
+                  {{ item.image | image_url: width: 320 | image_tag: widths: '160, 240, 320', loading: 'lazy', alt: item.product.title }}
+                {% else %}
+                  {{ 'product-1' | placeholder_svg_tag }}
+                {% endif %}
+              </a>
+              <div class="cart-item-copy">
+                <p class="cart-item-type">Ebook digital</p>
                 <h3><a href="{{ item.url }}">{{ item.product.title }}</a></h3>
-                <p>{{ item.final_line_price | money }}</p>
-                <a href="{{ item.url_to_remove }}">Eliminar</a>
+                {% unless item.variant.title == 'Default Title' %}<p>{{ item.variant.title }}</p>{% endunless %}
+                <p class="cart-item-price">{{ item.final_line_price | money }}</p>
+                <a class="cart-remove" href="{{ item.url_to_remove }}">Eliminar</a>
               </div>
-              <label>
-                <span class="visually-hidden">Cantidad</span>
+              <label class="cart-quantity">
+                <span>Cantidad</span>
                 <input class="quantity-input" type="number" name="updates[]" value="{{ item.quantity }}" min="0">
               </label>
             </article>
           {% endfor %}
         </div>
-        <div class="cart-summary">
-          <p class="total">Total: {{ cart.total_price | money }}</p>
-          <button class="button button--secondary" type="submit" name="update">Actualizar</button>
-          <button class="button" type="submit" name="checkout">Finalizar compra</button>
-        </div>
+
+        <aside class="cart-summary">
+          <p class="cart-summary-label">RESUMEN</p>
+          <div class="cart-summary-row"><span>Subtotal</span><strong>{{ cart.total_price | money }}</strong></div>
+          <p class="cart-summary-note">Producto digital. El acceso será enviado después de confirmar el pago.</p>
+          <button class="button button--wide" type="submit" name="checkout">Finalizar compra</button>
+          <button class="cart-update" type="submit" name="update">Actualizar carrito</button>
+          <div class="cart-security">
+            <span>✓ Pago seguro</span>
+            <span>✓ Entrega digital</span>
+          </div>
+        </aside>
       {% endform %}
     {% endif %}
   </div>

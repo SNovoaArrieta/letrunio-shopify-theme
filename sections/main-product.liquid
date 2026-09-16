@@ -1,36 +1,91 @@
-<section class="section">
-  <div class="page-width product-page">
-    <div class="product-gallery">
-      {% if product.featured_image != blank %}
-        {{ product.featured_image | image_url: width: 1200 | image_tag: widths: '500, 800, 1200', loading: 'eager', alt: product.title }}
-      {% else %}
-        {{ 'product-1' | placeholder_svg_tag }}
-      {% endif %}
+<section class="section product-detail-section">
+  <div class="page-width">
+    <nav class="breadcrumbs" aria-label="Migas de pan">
+      <a href="{{ routes.root_url }}">Inicio</a>
+      <span aria-hidden="true">/</span>
+      <a href="{{ routes.all_products_collection_url }}">Ebooks</a>
+      <span aria-hidden="true">/</span>
+      <span>{{ product.title }}</span>
+    </nav>
+
+    <div class="product-page">
+      <div class="product-gallery">
+        <div class="product-gallery-card">
+          <span class="product-media-label">Descarga digital</span>
+          {% if product.featured_image != blank %}
+            {{ product.featured_image | image_url: width: 1400 | image_tag: widths: '500, 800, 1100, 1400', loading: 'eager', alt: product.title }}
+          {% else %}
+            {{ 'product-1' | placeholder_svg_tag }}
+          {% endif %}
+        </div>
+        <p class="product-media-note">Puedes consultarlo desde tu celular, tableta o computador.</p>
+      </div>
+
+      <div class="product-info product-info-card">
+        <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+        <h1>{{ product.title }}</h1>
+        {% if section.settings.subtitle != blank %}<p class="product-subtitle">{{ section.settings.subtitle }}</p>{% endif %}
+
+        <div class="product-price-row">
+          <div class="product-price">{{ product.price | money }}</div>
+          {% if product.compare_at_price > product.price %}
+            <s class="product-compare-price">{{ product.compare_at_price | money }}</s>
+          {% endif %}
+          <span class="product-payment-note">Pago único</span>
+        </div>
+
+        {% if product.description != blank %}
+          <div class="product-description">{{ product.description }}</div>
+        {% endif %}
+
+        <div class="product-includes" role="list" aria-label="Beneficios del producto">
+          <span role="listitem">✓ Acceso digital</span>
+          <span role="listitem">✓ Lectura inmediata</span>
+          <span role="listitem">✓ Para guardar y consultar</span>
+        </div>
+
+        {% form 'product', product, class: 'product-form' %}
+          {% unless product.has_only_default_variant %}
+            <label class="variant-label" for="Variant-{{ section.id }}">Elige una opción</label>
+            <select class="variant-select" id="Variant-{{ section.id }}" name="id">
+              {% for variant in product.variants %}
+                <option value="{{ variant.id }}" {% if variant == product.selected_or_first_available_variant %}selected{% endif %} {% unless variant.available %}disabled{% endunless %}>
+                  {{ variant.title }}{% unless variant.available %} — Agotado{% endunless %}
+                </option>
+              {% endfor %}
+            </select>
+          {% else %}
+            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+          {% endunless %}
+
+          <button class="button button--wide product-add-button" type="submit" name="add" {% unless product.available %}disabled{% endunless %}>
+            {% if product.available %}{{ section.settings.button_label }}{% else %}No disponible{% endif %}
+          </button>
+          {{ form | payment_button }}
+        {% endform %}
+
+        <div class="trust-list">
+          <span><strong>Compra segura</strong><small>Pago procesado por Shopify</small></span>
+          <span><strong>Entrega digital</strong><small>Recibirás el acceso por correo</small></span>
+        </div>
+      </div>
     </div>
 
-    <div class="product-info">
-      <p class="eyebrow">EBOOK DIGITAL</p>
-      <h1>{{ product.title }}</h1>
-      <div class="product-price">{{ product.price | money }}</div>
-      <div class="product-description">{{ product.description }}</div>
-
-      {% form 'product', product, class: 'product-form' %}
-        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-        <button class="button button--wide" type="submit" name="add" {% unless product.available %}disabled{% endunless %}>
-          {% if product.available %}Agregar al carrito{% else %}No disponible{% endif %}
-        </button>
-        {{ form | payment_button }}
-      {% endform %}
-
-      <div class="trust-list">
-        <span>✓ Compra segura</span>
-        <span>✓ Producto 100% digital</span>
-        <span>✓ Acceso por correo después del pago</span>
-      </div>
+    <div class="product-reassurance" aria-label="Cómo funciona la compra">
+      <article><span>01</span><div><strong>Compra</strong><p>Completa el pago de forma segura.</p></div></article>
+      <article><span>02</span><div><strong>Recibe</strong><p>Obtén el acceso en tu correo.</p></div></article>
+      <article><span>03</span><div><strong>Disfruta</strong><p>Empieza a poner las ideas en práctica.</p></div></article>
     </div>
   </div>
 </section>
 
 {% schema %}
-{ "name": "Producto principal", "settings": [] }
+{
+  "name": "Producto principal",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Texto superior", "default": "EBOOK DIGITAL" },
+    { "type": "textarea", "id": "subtitle", "label": "Texto destacado", "default": "Una guía práctica para pasar de la idea a la acción sin complicarte." },
+    { "type": "text", "id": "button_label", "label": "Texto del botón", "default": "Quiero este ebook" }
+  ]
+}
 {% endschema %}
