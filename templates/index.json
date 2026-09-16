@@ -28,7 +28,11 @@
         "idea3": { "type": "idea", "settings": { "type": "RELAJADA", "heading": "Cine con sus propias reglas", "text": "Tema, ambiente, snacks y detalles que hacen que no sea simplemente ver otra película." } }
       },
       "block_order": ["idea1", "idea2", "idea3"],
-      "settings": {}
+      "settings": {
+        "eyebrow": "MIREN ANTES DE COMPRAR",
+        "heading": "Tres ejemplos de lo que encontrarán dentro",
+        "text": "Cada propuesta se convierte en un plan completo, no se queda en una frase bonita."
+      }
     },
     "value": {
       "type": "value-cards",
@@ -38,7 +42,11 @@
         "card3": { "type": "card", "settings": { "number": "∞", "heading": "Momentos para ustedes", "text": "Opciones que se pueden adaptar a sus gustos, espacio y presupuesto." } }
       },
       "block_order": ["card1", "card2", "card3"],
-      "settings": {}
+      "settings": {
+        "eyebrow": "LO QUE RECIBEN",
+        "heading": "30 planes listos para elegir y hacer",
+        "text": "Sin pasar horas buscando ideas ni convertir la cita en otra tarea pendiente."
+      }
     },
     "features": {
       "type": "features",
@@ -58,7 +66,11 @@
         "step3": { "type": "step", "settings": { "heading": "Disfruten sin improvisar", "text": "Guarden el celular, vivan el momento y vuelvan al ebook para la siguiente cita." } }
       },
       "block_order": ["step1", "step2", "step3"],
-      "settings": {}
+      "settings": {
+        "eyebrow": "ÚSENLO DESDE LA PRIMERA NOCHE",
+        "heading": "Elegir, preparar y disfrutar",
+        "text": "Así de simple está pensado el ebook."
+      }
     },
     "offer": {
       "type": "offer-box",
@@ -69,7 +81,11 @@
         "included4": { "type": "included", "settings": { "text": "Acceso digital para consultar cuando quieran" } }
       },
       "block_order": ["included1", "included2", "included3", "included4"],
-      "settings": {}
+      "settings": {
+        "eyebrow": "DESCÁRGUENLO HOY",
+        "heading": "Una idea diferente cuesta menos que volver a dejar el plan para después",
+        "text": "<p>Una noche para dos reúne 30 citas listas para adaptar, repetir y disfrutar a su manera.</p>"
+      }
     },
     "faq": {
       "type": "faq",
@@ -85,5 +101,5 @@
     "story": { "type": "brand-story", "settings": {} },
     "mobilebar": { "type": "mobile-purchase-bar", "settings": {} }
   },
-  "order": ["hero", "problem", "preview", "value", "steps", "features", "offer", "faq", "story", "mobilebar"]
+  "order": ["hero", "value", "preview", "offer", "steps", "faq", "mobilebar"]
 }
