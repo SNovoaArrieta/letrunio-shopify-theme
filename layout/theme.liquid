@@ -10,7 +10,7 @@
       {{ page_title }}
       {%- if current_tags %} — {{ current_tags | join: ', ' }}{% endif -%}
       {%- if current_page != 1 %} — Página {{ current_page }}{% endif -%}
-      {%- unless page_title contains shop.name %} — {{ shop.name }}{% endunless -%}
+      {%- unless page_title contains 'Letrunio' %} — Letrunio{% endunless -%}
     </title>
 
     {% if page_description %}
