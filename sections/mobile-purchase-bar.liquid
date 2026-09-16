@@ -1,0 +1,19 @@
+{% assign bar_product = section.settings.product %}
+<div class="mobile-purchase-bar" aria-label="Comprar Una noche para dos">
+  <div>
+    <strong>Una noche para dos</strong>
+    <span>{% if bar_product != blank %}{{ bar_product.price | money }}{% else %}{{ section.settings.fallback_price }}{% endif %}</span>
+  </div>
+  <a class="button" href="#oferta">Comprar</a>
+</div>
+
+{% schema %}
+{
+  "name": "Barra de compra móvil",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Producto" },
+    { "type": "text", "id": "fallback_price", "label": "Precio mientras eliges el producto", "default": "US$9,90" }
+  ],
+  "presets": [{ "name": "Barra de compra móvil" }]
+}
+{% endschema %}

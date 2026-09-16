@@ -10,6 +10,26 @@
       "block_order": ["tag1", "tag2", "tag3"],
       "settings": {}
     },
+    "problem": {
+      "type": "problem-solution",
+      "blocks": {
+        "point1": { "type": "point", "settings": { "heading": "Quieren hacer algo diferente", "text": "Pero pensar el plan desde cero termina quitándoles las ganas." } },
+        "point2": { "type": "point", "settings": { "heading": "No quieren gastar demasiado", "text": "Buscan una experiencia especial que también sea posible en casa." } },
+        "point3": { "type": "point", "settings": { "heading": "Necesitan volver a conectar", "text": "Sin pantallas de por medio y sin convertirlo en otra obligación." } }
+      },
+      "block_order": ["point1", "point2", "point3"],
+      "settings": {}
+    },
+    "preview": {
+      "type": "idea-preview",
+      "blocks": {
+        "idea1": { "type": "idea", "settings": { "type": "CREATIVA", "heading": "Restaurante secreto en casa", "text": "Cada persona prepara una parte de la experiencia sin contarle todo a la otra." } },
+        "idea2": { "type": "idea", "settings": { "type": "CONVERSACIÓN", "heading": "Preguntas que nunca se hicieron", "text": "Una noche para descubrir historias, gustos y pensamientos que todavía no conocen." } },
+        "idea3": { "type": "idea", "settings": { "type": "RELAJADA", "heading": "Cine con sus propias reglas", "text": "Tema, ambiente, snacks y detalles que hacen que no sea simplemente ver otra película." } }
+      },
+      "block_order": ["idea1", "idea2", "idea3"],
+      "settings": {}
+    },
     "value": {
       "type": "value-cards",
       "blocks": {
@@ -30,7 +50,27 @@
       "block_order": ["feature1", "feature2", "feature3"],
       "settings": {}
     },
-    "story": { "type": "brand-story", "settings": {} },
+    "steps": {
+      "type": "how-it-works",
+      "blocks": {
+        "step1": { "type": "step", "settings": { "heading": "Elijan una idea", "text": "Busquen el tipo de noche que les provoca compartir." } },
+        "step2": { "type": "step", "settings": { "heading": "Preparen lo necesario", "text": "Sigan las indicaciones sencillas y adapten el plan a sus gustos." } },
+        "step3": { "type": "step", "settings": { "heading": "Disfruten sin improvisar", "text": "Guarden el celular, vivan el momento y vuelvan al ebook para la siguiente cita." } }
+      },
+      "block_order": ["step1", "step2", "step3"],
+      "settings": {}
+    },
+    "offer": {
+      "type": "offer-box",
+      "blocks": {
+        "included1": { "type": "included", "settings": { "text": "30 ideas de citas en casa" } },
+        "included2": { "type": "included", "settings": { "text": "Instrucciones claras para preparar cada plan" } },
+        "included3": { "type": "included", "settings": { "text": "Opciones para diferentes gustos y presupuestos" } },
+        "included4": { "type": "included", "settings": { "text": "Acceso digital para consultar cuando quieran" } }
+      },
+      "block_order": ["included1", "included2", "included3", "included4"],
+      "settings": {}
+    },
     "faq": {
       "type": "faq",
       "blocks": {
@@ -41,7 +81,9 @@
       },
       "block_order": ["q1", "q2", "q3", "q4"],
       "settings": {}
-    }
+    },
+    "story": { "type": "brand-story", "settings": {} },
+    "mobilebar": { "type": "mobile-purchase-bar", "settings": {} }
   },
-  "order": ["hero", "value", "features", "story", "faq"]
+  "order": ["hero", "problem", "preview", "value", "steps", "features", "offer", "faq", "story", "mobilebar"]
 }

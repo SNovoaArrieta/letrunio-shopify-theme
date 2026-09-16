@@ -1,0 +1,74 @@
+{% assign offer_product = section.settings.product %}
+
+<section id="oferta" class="section offer-section">
+  <div class="page-width offer-wrap">
+    <div class="offer-copy">
+      <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      <h2>{{ section.settings.heading }}</h2>
+      <div class="offer-text">{{ section.settings.text }}</div>
+      <ul class="offer-list" role="list">
+        {% for block in section.blocks %}
+          <li {{ block.shopify_attributes }}><span aria-hidden="true">✓</span>{{ block.settings.text }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <aside class="offer-card">
+      <p class="offer-label">UNA NOCHE PARA DOS</p>
+      <p class="offer-price">
+        {% if offer_product != blank %}{{ offer_product.price | money }}{% else %}{{ section.settings.fallback_price }}{% endif %}
+      </p>
+      <p class="offer-note">Pago único · Ebook digital</p>
+
+      {% if offer_product != blank %}
+        {% form 'product', offer_product, class: 'product-form' %}
+          <input type="hidden" name="id" value="{{ offer_product.selected_or_first_available_variant.id }}">
+          <button class="button button--wide" type="submit" name="add" {% unless offer_product.available %}disabled{% endunless %}>
+            {% if offer_product.available %}Quiero mi ebook{% else %}No disponible{% endif %}
+          </button>
+          {{ form | payment_button }}
+        {% endform %}
+      {% else %}
+        <a class="button button--wide" href="#comprar">Quiero las 30 ideas</a>
+      {% endif %}
+
+      <div class="offer-security">
+        <span>Compra segura</span>
+        <span>Entrega digital por correo</span>
+      </div>
+    </aside>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Oferta final",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Producto" },
+    { "type": "text", "id": "eyebrow", "label": "Texto superior", "default": "TODO EN UN SOLO EBOOK" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "La próxima cita ya no tiene que empezar con “no sé, tú decide”" },
+    { "type": "richtext", "id": "text", "label": "Texto", "default": "<p>Descarga Una noche para dos y tengan siempre una idea lista para convertir el tiempo juntos en algo distinto.</p>" },
+    { "type": "text", "id": "fallback_price", "label": "Precio mientras eliges el producto", "default": "US$9,90" }
+  ],
+  "blocks": [
+    {
+      "type": "included",
+      "name": "Incluido",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Texto", "default": "30 ideas de citas en casa" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Oferta final",
+      "blocks": [
+        {"type":"included","settings":{"text":"30 ideas de citas en casa"}},
+        {"type":"included","settings":{"text":"Instrucciones claras para preparar cada plan"}},
+        {"type":"included","settings":{"text":"Opciones para diferentes gustos y presupuestos"}},
+        {"type":"included","settings":{"text":"Acceso digital para consultar cuando quieran"}}
+      ]
+    }
+  ]
+}
+{% endschema %}

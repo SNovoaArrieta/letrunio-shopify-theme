@@ -1,0 +1,57 @@
+<section class="section section--dark idea-preview">
+  <div class="page-width">
+    <div class="preview-heading">
+      <div>
+        <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+        <h2>{{ section.settings.heading }}</h2>
+      </div>
+      <p>{{ section.settings.text }}</p>
+    </div>
+
+    <div class="preview-grid">
+      {% for block in section.blocks %}
+        <article class="preview-card" {{ block.shopify_attributes }}>
+          <span class="preview-type">{{ block.settings.type }}</span>
+          <h3>{{ block.settings.heading }}</h3>
+          <p>{{ block.settings.text }}</p>
+        </article>
+      {% endfor %}
+    </div>
+
+    <div class="preview-cta">
+      <a class="button button--light" href="#oferta">Quiero descubrir las otras 27 ideas</a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Muestra de ideas",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Texto superior", "default": "UNA PEQUEÑA MUESTRA" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "El tipo de planes que encontrarán dentro" },
+    { "type": "textarea", "id": "text", "label": "Texto", "default": "No son solo nombres de citas: cada propuesta está pensada para convertirse en un plan completo." }
+  ],
+  "blocks": [
+    {
+      "type": "idea",
+      "name": "Idea",
+      "settings": [
+        { "type": "text", "id": "type", "label": "Tipo", "default": "CREATIVA" },
+        { "type": "text", "id": "heading", "label": "Nombre", "default": "Restaurante secreto en casa" },
+        { "type": "textarea", "id": "text", "label": "Descripción", "default": "Cada persona prepara una parte de la experiencia sin contarle todo a la otra." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Muestra de ideas",
+      "blocks": [
+        {"type":"idea","settings":{"type":"CREATIVA","heading":"Restaurante secreto en casa","text":"Cada persona prepara una parte de la experiencia sin contarle todo a la otra."}},
+        {"type":"idea","settings":{"type":"CONVERSACIÓN","heading":"Preguntas que nunca se hicieron","text":"Una noche para descubrir historias, gustos y pensamientos que todavía no conocen."}},
+        {"type":"idea","settings":{"type":"RELAJADA","heading":"Cine con sus propias reglas","text":"Tema, ambiente, snacks y detalles que hacen que no sea simplemente ver otra película."}}
+      ]
+    }
+  ]
+}
+{% endschema %}

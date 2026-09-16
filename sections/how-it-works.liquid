@@ -1,0 +1,49 @@
+<section class="section section--soft">
+  <div class="page-width">
+    <div class="section-heading">
+      <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.text }}</p>
+    </div>
+    <div class="steps-grid">
+      {% for block in section.blocks %}
+        <article class="step-card" {{ block.shopify_attributes }}>
+          <span class="step-number">0{{ forloop.index }}</span>
+          <h3>{{ block.settings.heading }}</h3>
+          <p>{{ block.settings.text }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Cómo funciona",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Texto superior", "default": "SIN COMPLICARSE" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "De la indecisión al plan en tres pasos" },
+    { "type": "textarea", "id": "text", "label": "Texto", "default": "El ebook está hecho para usarlo, no para dejarlo guardado." }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Paso",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Título", "default": "Elijan una idea" },
+        { "type": "textarea", "id": "text", "label": "Texto", "default": "Busquen el tipo de noche que les provoca compartir." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Cómo funciona",
+      "blocks": [
+        {"type":"step","settings":{"heading":"Elijan una idea","text":"Busquen el tipo de noche que les provoca compartir."}},
+        {"type":"step","settings":{"heading":"Preparen lo necesario","text":"Sigan las indicaciones sencillas y adapten el plan a sus gustos."}},
+        {"type":"step","settings":{"heading":"Disfruten sin improvisar","text":"Guarden el celular, vivan el momento y vuelvan al ebook para la siguiente cita."}}
+      ]
+    }
+  ]
+}
+{% endschema %}

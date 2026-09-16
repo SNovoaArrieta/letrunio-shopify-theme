@@ -4,7 +4,7 @@
   {% assign featured_image = featured_product.featured_image %}
 {% endif %}
 
-<section class="hero">
+<section id="comprar" class="hero">
   <div class="page-width hero-grid">
     <div class="hero-copy">
       <p class="eyebrow">{{ section.settings.eyebrow }}</p>
@@ -29,7 +29,7 @@
           {% form 'product', featured_product %}
             <input type="hidden" name="id" value="{{ featured_product.selected_or_first_available_variant.id }}">
             <button class="button" type="submit" name="add" {% unless featured_product.available %}disabled{% endunless %}>
-              {% if featured_product.available %}Quiero mi ebook{% else %}Agotado{% endif %}
+              {% if featured_product.available %}Quiero las 30 ideas{% else %}Agotado{% endif %}
             </button>
           {% endform %}
           <a class="button button--secondary" href="{{ featured_product.url }}">Ver todos los detalles</a>
@@ -62,13 +62,13 @@
   "settings": [
     { "type": "product", "id": "product", "label": "Producto destacado" },
     { "type": "image_picker", "id": "image", "label": "Portada alternativa" },
-    { "type": "text", "id": "eyebrow", "label": "Texto superior", "default": "PRIMERA COLECCIÓN DE LETRUNIO" },
-    { "type": "text", "id": "heading", "label": "Título", "default": "Planes que vuelven especial una noche cualquiera" },
-    { "type": "richtext", "id": "text", "label": "Descripción", "default": "<p>30 citas en casa, fáciles de preparar y pensadas para conectar sin repetir siempre el mismo plan.</p>" },
+    { "type": "text", "id": "eyebrow", "label": "Texto superior", "default": "30 CITAS EN CASA PARA SALIR DE LA RUTINA" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "Dejen de repetir el mismo plan cada fin de semana" },
+    { "type": "richtext", "id": "text", "label": "Descripción", "default": "<p>Una noche para dos convierte una noche cualquiera en un momento que sí provoca compartir: elijan una idea, sigan la guía y disfruten sin tener que improvisar.</p>" },
     { "type": "text", "id": "fallback_price", "label": "Precio mientras eliges el producto", "default": "US$9,90" },
-    { "type": "text", "id": "cta_label", "label": "Texto del botón", "default": "Descubrir el ebook" },
+    { "type": "text", "id": "cta_label", "label": "Texto del botón", "default": "Ver lo que incluye" },
     { "type": "url", "id": "cta_link", "label": "Enlace del botón" },
-    { "type": "text", "id": "note", "label": "Nota flotante", "default": "Ideas simples. Momentos que sí se recuerdan." }
+    { "type": "text", "id": "note", "label": "Nota flotante", "default": "No necesitan salir. Necesitan una idea diferente." }
   ],
   "blocks": [
     {
