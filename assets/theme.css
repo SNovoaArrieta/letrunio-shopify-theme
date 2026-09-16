@@ -67,8 +67,9 @@ button { cursor: pointer; }
   position: sticky;
   z-index: 50;
   top: 0;
-  border-bottom: 1px solid rgba(131, 208, 255, .16);
-  background: rgba(6, 26, 49, .94);
+  border-bottom: 1px solid rgba(32, 53, 75, .1);
+  background: rgba(255, 255, 255, .97);
+  box-shadow: 0 10px 32px rgba(8, 35, 68, .08);
   backdrop-filter: blur(14px);
 }
 
@@ -80,15 +81,17 @@ button { cursor: pointer; }
   gap: 2rem;
 }
 
-.brand { display: inline-flex; align-items: center; color: #fff; }
+.brand { display: inline-flex; align-items: center; color: var(--color-primary); }
 .brand--logo { padding: 0; border: 0; background: transparent; box-shadow: none; }
 .brand-lockup { width: 132px; height: auto; object-fit: contain; }
 .brand-custom-logo { width: auto; max-width: 150px; max-height: 42px; object-fit: contain; }
 .brand--footer { box-shadow: none; }
-.nav { display: flex; justify-content: center; gap: 1.7rem; color: #d7e8f7; font-size: .95rem; font-weight: 650; }
-.nav a:hover, .nav a:focus-visible { color: #83d0ff; }
+.nav { display: flex; justify-content: center; gap: .45rem; color: #20354b; font-family: "Avenir Next", Avenir, Montserrat, ui-sans-serif, system-ui, sans-serif; font-size: .78rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.nav a { padding: .62rem .85rem; border-radius: 999px; transition: color .2s ease, background .2s ease, transform .2s ease; }
+.nav a:hover, .nav a:focus-visible { background: #e8f6ff; color: #166aab; transform: translateY(-1px); }
 .header-actions { display: flex; align-items: center; gap: 1rem; }
-.cart-link { display: inline-flex; align-items: center; gap: .45rem; color: #fff; font-weight: 750; }
+.cart-link { padding: .48rem .55rem .48rem .78rem; display: inline-flex; align-items: center; gap: .55rem; border: 1px solid rgba(32,53,75,.12); border-radius: 999px; color: #20354b; font-family: "Avenir Next", Avenir, Montserrat, ui-sans-serif, system-ui, sans-serif; font-size: .76rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; transition: border-color .2s ease, background .2s ease; }
+.cart-link:hover, .cart-link:focus-visible { border-color: rgba(38,125,204,.28); background: #f0f9ff; }
 .cart-count { min-width: 1.45rem; height: 1.45rem; display: grid; place-items: center; border-radius: 99px; background: var(--color-accent); color: var(--color-primary); font-size: .75rem; }
 .mobile-menu { display: none; }
 
@@ -310,10 +313,12 @@ p { margin: 0; }
 
 @media (max-width: 860px) {
   .desktop-nav { display: none; }
-  .mobile-menu { display: block; color: #fff; }
-  .mobile-menu summary { list-style: none; font-weight: 800; }
+  .mobile-menu { display: block; color: #20354b; }
+  .mobile-menu summary { list-style: none; font-family: "Avenir Next", Avenir, Montserrat, ui-sans-serif, system-ui, sans-serif; font-size: .74rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
   .mobile-menu summary::-webkit-details-marker { display: none; }
-  .mobile-menu-panel { position: absolute; top: 100%; left: 0; right: 0; padding: 1rem; display: grid; gap: .8rem; border-bottom: 1px solid rgba(131,208,255,.18); background: #061a31; color: #fff; box-shadow: 0 14px 28px rgba(0,0,0,.2); }
+  .mobile-menu-panel { position: absolute; top: 100%; left: 0; right: 0; padding: 1rem; display: grid; gap: .3rem; border-bottom: 1px solid rgba(32,53,75,.1); background: #fff; color: #20354b; box-shadow: 0 18px 34px rgba(8,35,68,.12); }
+  .mobile-menu-panel a { padding: .7rem .8rem; border-radius: 10px; font-family: "Avenir Next", Avenir, Montserrat, ui-sans-serif, system-ui, sans-serif; font-size: .78rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+  .mobile-menu-panel a:hover, .mobile-menu-panel a:focus-visible { background: #e8f6ff; color: #166aab; }
   .header-inner { grid-template-columns: auto 1fr auto; gap: 1rem; }
   .brand { text-align: center; }
   .hero-grid, .product-page, .brand-story, .problem-grid, .offer-wrap { grid-template-columns: 1fr; }
