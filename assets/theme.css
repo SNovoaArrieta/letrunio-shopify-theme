@@ -294,12 +294,14 @@ p { margin: 0; }
 .quantity-input { width: 76px; padding: .5rem; border: 1px solid rgba(8,35,68,.2); border-radius: 8px; }
 .richtext { margin-top: 1.5rem; color: #405b77; }
 
-.site-footer { padding: 3.5rem 0 1.5rem; background: #061a31; color: #fff; }
+.site-footer { padding: 3.5rem 0 1.5rem; border-top: 1px solid rgba(32,53,75,.1); background: #fff; color: #20354b; box-shadow: 0 -10px 32px rgba(8,35,68,.05); }
 .footer-grid { display: grid; grid-template-columns: 1.2fr .8fr .8fr; gap: 2rem; }
-.footer-brand p { margin-top: .8rem; max-width: 420px; color: #aac0d7; }
-.footer-title { margin-bottom: .8rem; color: #83d0ff; font-size: .8rem; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
-.footer-links { display: grid; gap: .5rem; color: #d7e5f2; }
-.footer-bottom { margin-top: 2.5rem; padding-top: 1.2rem; border-top: 1px solid rgba(255,255,255,.12); color: #8ea9c2; font-size: .82rem; }
+.footer-brand p { margin-top: 1rem; max-width: 420px; color: #52677d; }
+.footer-title { margin-bottom: .9rem; color: #267dcc; font-family: "Avenir Next", Avenir, Montserrat, ui-sans-serif, system-ui, sans-serif; font-size: .76rem; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
+.footer-links { display: grid; gap: .25rem; color: #20354b; font-family: "Avenir Next", Avenir, Montserrat, ui-sans-serif, system-ui, sans-serif; font-size: .84rem; font-weight: 750; letter-spacing: .045em; }
+.footer-links a { width: fit-content; padding: .3rem 0; transition: color .2s ease, transform .2s ease; }
+.footer-links a:hover, .footer-links a:focus-visible { color: #267dcc; transform: translateX(3px); }
+.footer-bottom { margin-top: 2.5rem; padding-top: 1.2rem; border-top: 1px solid rgba(32,53,75,.1); color: #6a7f93; font-size: .78rem; letter-spacing: .02em; }
 
 @keyframes bookFloat {
   0%, 100% { transform: translateY(0) rotate(-1deg); }
