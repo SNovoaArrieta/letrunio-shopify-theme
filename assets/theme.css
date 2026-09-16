@@ -81,7 +81,7 @@ button { cursor: pointer; }
 }
 
 .brand { display: inline-flex; align-items: center; color: #fff; }
-.brand--logo { padding: .34rem .72rem; border: 1px solid rgba(131,208,255,.22); border-radius: 12px; background: rgba(255,255,255,.97); box-shadow: 0 9px 24px rgba(0,0,0,.16); }
+.brand--logo { padding: 0; border: 0; background: transparent; box-shadow: none; }
 .brand-lockup { width: 132px; height: auto; object-fit: contain; }
 .brand-custom-logo { width: auto; max-width: 150px; max-height: 42px; object-fit: contain; }
 .brand--footer { box-shadow: none; }
@@ -344,7 +344,7 @@ p { margin: 0; }
   .page-width { width: min(calc(100% - 1.25rem), var(--page-width)); }
   .section { padding: 3.5rem 0; }
   .header-inner { min-height: 68px; gap: .65rem; }
-  .brand--logo { padding: .3rem .52rem; border-radius: 10px; }
+  .brand--logo { padding: 0; }
   .brand-lockup { width: 106px; }
   .cart-link { font-size: 0; }
   .cart-count { font-size: .75rem; }
