@@ -80,12 +80,11 @@ button { cursor: pointer; }
   gap: 2rem;
 }
 
-.brand { display: inline-flex; align-items: center; gap: .65rem; color: #fff; font-size: 1.35rem; font-weight: 900; letter-spacing: -.04em; }
-.brand-mark { width: 42px; height: 42px; display: inline-grid; flex: 0 0 42px; place-items: center; color: #83d0ff; filter: drop-shadow(0 8px 16px rgba(56,169,238,.18)); }
-.brand-mark svg { width: 100%; height: 100%; }
-.brand-name { font-size: 1.45rem; font-weight: 900; letter-spacing: -.055em; line-height: 1; }
-.brand img, .brand-custom-logo { width: auto; max-width: 52px; max-height: 42px; object-fit: contain; }
-.brand--footer .brand-mark { color: #83d0ff; }
+.brand { display: inline-flex; align-items: center; color: #fff; }
+.brand--logo { padding: .34rem .72rem; border: 1px solid rgba(131,208,255,.22); border-radius: 12px; background: rgba(255,255,255,.97); box-shadow: 0 9px 24px rgba(0,0,0,.16); }
+.brand-lockup { width: 132px; height: auto; object-fit: contain; }
+.brand-custom-logo { width: auto; max-width: 150px; max-height: 42px; object-fit: contain; }
+.brand--footer { box-shadow: none; }
 .nav { display: flex; justify-content: center; gap: 1.7rem; color: #d7e8f7; font-size: .95rem; font-weight: 650; }
 .nav a:hover, .nav a:focus-visible { color: #83d0ff; }
 .header-actions { display: flex; align-items: center; gap: 1rem; }
@@ -345,9 +344,8 @@ p { margin: 0; }
   .page-width { width: min(calc(100% - 1.25rem), var(--page-width)); }
   .section { padding: 3.5rem 0; }
   .header-inner { min-height: 68px; gap: .65rem; }
-  .brand { gap: .45rem; }
-  .brand-mark { width: 36px; height: 36px; flex-basis: 36px; }
-  .brand-name { font-size: 1.2rem; }
+  .brand--logo { padding: .3rem .52rem; border-radius: 10px; }
+  .brand-lockup { width: 106px; }
   .cart-link { font-size: 0; }
   .cart-count { font-size: .75rem; }
   h1 { font-size: clamp(2.45rem, 14vw, 3.6rem); }

@@ -13,10 +13,9 @@
       </nav>
     </details>
 
-    <a class="brand" href="{{ routes.root_url }}" aria-label="Letrunio — Inicio">
+    <a class="brand brand--logo" href="{{ routes.root_url }}" aria-label="Letrunio — Inicio">
       {% if section.settings.logo != blank %}
         {{ section.settings.logo | image_url: width: 360 | image_tag: widths: '180, 240, 360', alt: 'Logo de Letrunio', class: 'brand-custom-logo' }}
-        <span class="brand-name">Letrunio</span>
       {% else %}
         {% render 'letrunio-brand' %}
       {% endif %}
